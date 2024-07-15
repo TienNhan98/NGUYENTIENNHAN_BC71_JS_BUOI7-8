@@ -102,3 +102,17 @@ domID("btn_6").onclick = function () {
   }
   domID("result_6").innerHTML = ` Sau khi đổi chổ: ${arrNumber}`;
 };
+
+//Bài 7. Sắp Xếp Tăng Dần
+domID("btn_7").onclick = function () {
+  for (var index = 0; index < arrNumber.length; index++) {
+    for (var index2 = 0; index2 < arrNumber.length - 1; index2++) {
+      if (arrNumber[index2] > arrNumber[index2 + 1]) {
+        var thayDoi = arrNumber[index2];
+        arrNumber[index2] = arrNumber[index2 + 1];
+        arrNumber[index2 + 1] = thayDoi;
+      }
+    }
+  }
+  domID("result_7").innerHTML = ` Sau khi sắp xếp: ${arrNumber}`;
+};
