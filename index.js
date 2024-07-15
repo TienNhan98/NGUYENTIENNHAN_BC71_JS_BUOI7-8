@@ -14,7 +14,7 @@ function btnAddNumber() {
 
 // Bài tập 1: Tính Tổng Số Dương
 domID("btn_1").onclick = function () {
-  //   alert(123);
+  // alert(123);
   var tongSoDuong = 0;
   for (var index = 0; index < arrNumber.length; index++) {
     var number = arrNumber[index];
@@ -33,7 +33,7 @@ domID("btn_2").onclick = function () {
   var demSoDuong = 0;
   for (var index = 0; index < arrNumber.length; index++) {
     var number = arrNumber[index];
-    if (number >= 0) {
+    if (number > 0) {
       demSoDuong++;
     }
   }
@@ -115,4 +115,63 @@ domID("btn_7").onclick = function () {
     }
   }
   domID("result_7").innerHTML = ` Sau khi sắp xếp: ${arrNumber}`;
+};
+
+//Bài 8. Tìm Số Nguyên Tố Đầu Tiên
+domID("btn_8").onclick = function () {
+  var arrSoNguyenTo = [];
+  for (var index = 0; index < arrNumber.length; index++) {
+    var number = arrNumber[index];
+    var checkSNT = true;
+    if (number <= 1) {
+      checkSNT = false;
+    } else {
+      for (var i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
+          checkSNT = false;
+          break;
+        }
+      }
+    }
+    if (checkSNT) {
+      arrSoNguyenTo.push(number);
+    }
+    console.log("🚀 ~ arrSoNguyenTo:", arrSoNguyenTo);
+  }
+  domID("result_8").innerHTML = ` Số Nguyên Tố Đầu Tiên:${arrSoNguyenTo[0]}`;
+};
+
+//Bài 9. Đếm Số Nguyên
+domID("btn_9").onclick = function () {
+  var tongSoNguyen = 0;
+  for (var index = 0; index < arrNumber.length; index++) {
+    var number = arrNumber[index];
+    if (Number.isInteger(number)) {
+      tongSoNguyen++;
+    }
+  }
+  domID("result_9").innerHTML = `Tổng số nguyên: ${tongSoNguyen}`;
+};
+
+//Bài 10. So Sánh Số Âm và Số Dương
+domID("btn_10").onclick = function () {
+  var tongSoAm = 0;
+  var tongSoDuong = 0;
+  var ketQua = "";
+  for (var index = 0; index < arrNumber.length; index++) {
+    var number = arrNumber[index];
+    if (number < 0) {
+      tongSoAm++;
+    } else if (number > 0) {
+      tongSoDuong++;
+    }
+  }
+  if (tongSoAm === tongSoDuong) {
+    ketQua = "Số Âm = Số Dương";
+  } else if (tongSoAm > tongSoDuong) {
+    ketQua = "Số Âm > Số Dương";
+  } else {
+    ketQua = "Số Dương > Số Âm";
+  }
+  domID("result_10").innerHTML = `So Sánh: ${ketQua}`;
 };
